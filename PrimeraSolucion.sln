@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winform_app", "Proyecto2\winform_app.csproj", "{553C9952-5386-44BA-AEAC-87A8F674BB6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominiooo\Dominio.csproj", "{8A6994EC-2A24-44C6-BDFB-83BA5DE2AFDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{5AF8A396-8B98-40AB-9786-733F99AB6A56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{553C9952-5386-44BA-AEAC-87A8F674BB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{553C9952-5386-44BA-AEAC-87A8F674BB6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{553C9952-5386-44BA-AEAC-87A8F674BB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{553C9952-5386-44BA-AEAC-87A8F674BB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6994EC-2A24-44C6-BDFB-83BA5DE2AFDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6994EC-2A24-44C6-BDFB-83BA5DE2AFDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6994EC-2A24-44C6-BDFB-83BA5DE2AFDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6994EC-2A24-44C6-BDFB-83BA5DE2AFDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AF8A396-8B98-40AB-9786-733F99AB6A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF8A396-8B98-40AB-9786-733F99AB6A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF8A396-8B98-40AB-9786-733F99AB6A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF8A396-8B98-40AB-9786-733F99AB6A56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CC55EB5-0D56-4A4A-ACC4-B2A4DAC682FA}
+	EndGlobalSection
+EndGlobal
