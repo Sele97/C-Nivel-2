@@ -36,6 +36,10 @@ namespace Proyecto2
                 poke.Nombre = txtNombre.Text;
                 poke.Descripcion = txtDescripcion.Text;
                 //tengo mi objeto cargado.
+                poke.UrlImagen = txtUrlImagen.Text;
+                poke.Tipo = (Elemento)cboTipo.SelectedItem; //dame el objeto seleccionado.
+                poke.Debilidad = (Elemento)cboDebilidad.SelectedItem;
+                //se lleva el objeto tipo y debilidad cargado con lo q la persona selecciono.
 
                 negocio.agregar(poke); 
                 //funcion "Agregar" que hice en Negocio.
@@ -57,7 +61,7 @@ namespace Proyecto2
             ElementoNegocio elementoNegocio = new ElementoNegocio();
 
             try
-            {       
+            {      // una lista para cada desplegable.
                 cboTipo.DataSource = elementoNegocio.listar();
                 cboDebilidad.DataSource = elementoNegocio.listar();
 
@@ -68,6 +72,24 @@ namespace Proyecto2
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void txtUrlImagen_Leave(object sender, EventArgs e)
+        {
+            cargarImagen(txtUrlImagen.Text);
+        }
+
+        private void cargarImagen(string Imagen)
+        {
+            try
+            {
+                pbxPokemon.Load(Imagen); // si falla cargar  imagen porque no tiene muestra la foto de que no contiene imagen (abajo).
+            }
+
+            catch (Exception ex)
+            {
+                pbxPokemon.Load("https://images.wondershare.com/repairit/aticle/2021/07/resolve-images-not-showing-problem-1.jpg");
+            }
         }
     }
 }

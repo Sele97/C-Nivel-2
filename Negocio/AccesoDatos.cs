@@ -67,6 +67,12 @@ namespace Negocio
         
         }
 
+        public void setearParametro(string nombre, object valor) //le doy los valor a idtipo y iddebilidad de la consulta.
+        {
+            comando.Parameters.AddWithValue(nombre, valor); //va a permitir que le cargue un nombre de un parametro y el valor.
+            
+        }
+
         public void cerrarConexion()
         {
             if (lector != null) // cierro la conexion si hay un lector utilizandose.

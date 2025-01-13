@@ -25,11 +25,7 @@ namespace winform_app
 
         private void frmPokemones_Load(object sender, EventArgs e)
         {
-            PokemonNegocio negocio = new PokemonNegocio();
-            listaPokemon = negocio.listar();
-            dgvPokemones.DataSource = listaPokemon; // data source : recibe un origen de datos y los modela en la tabla. negocio listar : recibe una lista de datos.
-            dgvPokemones.Columns["UrlImagen"].Visible = false ; // oculto columna de url imagen porque no la quiero ver.
-            cargarImagen(listaPokemon[0].UrlImagen);
+            cargar();
 
         }
 
@@ -39,11 +35,28 @@ namespace winform_app
             cargarImagen(seleccionado.UrlImagen);
         }
 
+        private void cargar()
+        {
+            PokemonNegocio negocio = new PokemonNegocio();
+            try
+            {
+                listaPokemon = negocio.listar();
+                dgvPokemones.DataSource = listaPokemon; // data source : recibe un origen de datos y los modela en la tabla. negocio listar : recibe una lista de datos.
+                dgvPokemones.Columns["UrlImagen"].Visible = false; // oculto columna de url imagen porque no la quiero ver.
+                cargarImagen(listaPokemon[0].UrlImagen);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+        }
+
         private void cargarImagen(string Imagen)
         {
             try
             {
-                pbxPokemon.Load(Imagen); // si falla cargar imagen porque no tiene muestra la foto de que no contiene imagen (abajo).
+                pbxPokemon.Load(Imagen); // si falla cargar  imagen porque no tiene muestra la foto de que no contiene imagen (abajo).
             }
 
             catch (Exception ex)
@@ -57,6 +70,9 @@ namespace winform_app
         {
             frmAltaPokemon alta = new frmAltaPokemon();
             alta.ShowDialog(); // no permita salir de la app, ir a otra ventana hasta q no termine de trabajar una.
+            //cuando se cierre la pantalla de agregar, sigue lo siguiente:
+            cargar();
+
 
         }
     }   

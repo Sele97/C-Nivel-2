@@ -18,8 +18,12 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo)values(" + nuevo.Numero + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', 1)");
-                datos.ejecutarLectura();
+                datos.setearConsulta("Insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)values(" + nuevo.Numero + ", '" + nuevo.Nombre + "', '" + nuevo.Descripcion + "', 1, @idTipo, @idDebilidad,@UrlImagen  )");
+                datos.setearParametro("@idTipo", nuevo.Tipo.Id); // llamo a la funcion de parametros.
+                datos.setearParametro("@idDebilidad", nuevo.Debilidad.Id);
+                datos.setearParametro("@UrlImagen", nuevo.UrlImagen);
+                
+                datos.ejecutarAccion();
             }
             catch (Exception ex)
             {
@@ -63,8 +67,16 @@ namespace Negocio
                    aux.Numero = lector.GetInt32(0);
                    aux.Nombre = (string)lector["Nombre"];
                    aux.Descripcion = (string)lector["Descripcion"];
-                   aux.UrlImagen = (string)lector["UrlImagen"];
-                   aux.Tipo = new Elemento(); //porque tipo no tiene instancia.
+                    //Formas de validar si la columna de tu base de datos es nula o no.
+                    // si no es nulo lo leo.
+
+                   if(!(lector.IsDBNull(lector.GetOrdinal("UrlImagen")))) //voy a preguntar si lo q esta adentro del lector esta nulo. Si tiene null no lo voy a leer, si no esta null voy a leerlo y guardarlo en la propiedad.
+                     aux.UrlImagen = (string)lector["UrlImagen"];
+                    //otra forma de hacerlo:
+                    //if (!(lector["UrlImagen"] is DBNull))
+                       // aux.UrlImagen = (string)lector["UrlImagen"];
+
+                    aux.Tipo = new Elemento(); //porque tipo no tiene instancia.
                    aux.Tipo.Descripcion = (string)lector["Tipo"]; // de tipo me estoy trayendo la Descripcion. Tipo es un objeto.
                    aux.Debilidad = new Elemento();
                    aux.Debilidad.Descripcion = (string)lector["Debilidad"];
